@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, StyleSheet, TextInput, Button, Pressable, TouchableOpacity} from 'react-native';
+import {Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import Lamp from '@/assets/images/lamp';
 
 const Index = () => {
@@ -7,10 +7,12 @@ const Index = () => {
 
   return (
     <View style={styles.container}>
-      <Lamp width={40} height={40} style={styles.marginBottom} />
+      <View style={styles.lamp}>
+        <Lamp width={120} height={120} style={[styles.marginBottom, styles.lampSvg]} />
+      </View>
 
       <View style={styles.suggestionBox}>
-        <Text style={styles.marginBottom}>Me sugira uma ideia sobre...</Text>
+        <Text style={[styles.marginBottom, styles.suggestMeText]}>Me sugira uma ideia sobre...</Text>
         <TextInput 
           style={[styles.input, styles.marginBottom]} 
           placeholder={text} 
@@ -21,6 +23,8 @@ const Index = () => {
           <Text style={styles.suggestionButtonText}>Botão de Sugestão</Text>
         </TouchableOpacity>
       </View>
+
+      <Text style={[styles.bottom, styles.suggestMeText]}>Desenvolvido por liquid.dreper@gmail.com</Text>
     </View>
   );
 };
@@ -30,13 +34,20 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   container: {
-    backgroundColor: '#c9c9c9',
+    backgroundColor: '#111',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
+  lamp: {
+    position: 'absolute',
+    top: 48,
+    backgroundColor: '#393428',
+    padding: 12,
+    borderRadius: '50%',
+  },
   suggestionBox: {
-    width: '80%'
+    width: '80%',
   },
   input: {
     height: 40,
@@ -49,18 +60,26 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#000',
   },
+  suggestMeText: {
+    color: '#ffffff',
+    fontWeight: 'bold'
+  },
   suggestionButton: {
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 12,
     borderRadius: 4,
-    backgroundColor: 'black',
+    backgroundColor: '#8E7535',
   },
   suggestionButtonText: {
     color: 'white',
     fontWeight:'bold',
     textTransform: 'uppercase',
     fontFamily:'sans-serif'
+  },
+  bottom: {
+    position: 'absolute',
+    bottom: 24,
   }
 });
 
