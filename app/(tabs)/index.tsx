@@ -1,24 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import Lamp from '@/assets/images/lamp';
 
 const Index = () => {
-  const [text, onChangeText] = React.useState('ex: Gansos');
+  const [loading, setLoading] = useState(true);
+  const [suggestion, setSuggestion] = useState("")
 
   return (
     <View style={styles.container}>
       <View style={styles.lamp}>
-        <Lamp width={120} height={120} style={[styles.marginBottom, styles.lampSvg]} />
+        <Lamp width={120} height={120} style={[styles.marginBottom]} />
       </View>
 
       <View style={styles.suggestionBox}>
         <Text style={[styles.marginBottom, styles.suggestMeText]}>Me sugira uma ideia sobre...</Text>
+
         <TextInput 
           style={[styles.input, styles.marginBottom]} 
-          placeholder={text} 
+          placeholder={'ex: Gansos'} 
           placeholderTextColor={'#777'} 
-          onChangeText={onChangeText}
+          value={suggestion}
+          onChangeText={(suggestion) => setSuggestion(suggestion)}
         />
+
         <TouchableOpacity style={styles.suggestionButton}>
           <Text style={styles.suggestionButtonText}>Botão de Sugestão</Text>
         </TouchableOpacity>
